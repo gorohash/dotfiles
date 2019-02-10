@@ -61,15 +61,20 @@ add-zsh-hook precmd _precmd_vcs_info
 # git
 alias ga='git add'
 alias gc='git commit'
-alias gco='git checkout'
+alias gco='git checkout $(git branch --sort=-authordate | cut -b 3- | peco)'
+alias gcob='git checkout -b'
 alias gd='git diff'
-alias gst='git status'
 alias gl='git log --graph'
 alias glo='git log --graph --oneline'
+alias gs='git stash'
+alias gsp='git stash pop'
+alias gst='git status'
 
 # tig
-alias tigs='tig status'
+alias tgs='tig status'
 
+# ghq
+alias cdg='cd $(ghq list -p | peco)'
 
 # prompt
 setopt prompt_subst
