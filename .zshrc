@@ -35,13 +35,29 @@ zstyle ':completion:*' menu select
 setopt menu_complete
 
 
-# ls
-export CLICOLOR=1
-export LSCOLORS=GxCxcxdxCxegedabagacad
+# environment dependence
+case ${OSTYPE} in
+  darwin*)
+    # for Mac
 
-alias ls='ls -G'
-alias ll='ls -Gl'
-alias la='ls -Gla'
+    # tac
+    alias tac='tail -r'
+
+    # ls
+    export CLICOLOR=1
+    export LSCOLORS=GxCxcxdxCxegedabagacad
+
+    alias ls='ls -G'
+    alias ll='ls -l'
+    alias la='ls -la'
+    ;;
+
+  linux*)
+    # for Linux
+    ;;
+
+esac
+
 
 # version control system info
 autoload -Uz vcs_info
