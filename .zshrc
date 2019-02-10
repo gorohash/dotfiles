@@ -59,6 +59,9 @@ case ${OSTYPE} in
 esac
 
 
+# history
+alias his='cd $(history -n 1 | tac | peco)'
+
 # version control system info
 autoload -Uz vcs_info
 
