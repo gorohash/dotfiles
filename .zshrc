@@ -49,7 +49,7 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%{${fg[red]}%}*%{${reset_color}%}"
-zstyle ':vcs_info:git:*' unstagedstr "%{${fg[yellow]%}+%{${reset_color}%}"
+zstyle ':vcs_info:git:*' unstagedstr "%{${fg[yellow]}%}+%{${reset_color}%}"
 zstyle ':vcs_info:*' formats "%c%u [ %{${fg[magenta]}%}%b%{${reset_color}%} ]"
 zstyle ':vcs_info:*' actionformats ""
 function _precmd_vcs_info () {
