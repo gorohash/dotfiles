@@ -60,7 +60,13 @@ esac
 
 
 # history
-alias his='cd $(history -n 1 | tac | peco)'
+function _peco_history() {
+  BUFFER=`history -n 1 | tac | peco`
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N _peco_history
+bindkey '^R' _peco_history
 
 # version control system info
 autoload -Uz vcs_info
