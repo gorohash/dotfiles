@@ -48,16 +48,20 @@ case ${OSTYPE} in
     export LSCOLORS=GxCxcxdxCxegedabagacad
 
     alias ls='ls -G'
-    alias ll='ls -l'
-    alias la='ls -la'
     ;;
 
   linux*)
     # for Linux
+	
+	# ls
+	alias ls='ls --color=auto'
     ;;
 
 esac
 
+# ls
+alias ll='ls -l'
+alias la='ls -la'
 
 # history
 function _peco_history() {
