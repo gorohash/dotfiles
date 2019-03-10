@@ -112,7 +112,7 @@ function gco() {
 alias tgs='tig status'
 
 # ghq
-alias cdg='cd $(ghq list -p | peco)'
+alias cdg='cd $(ghq root)/$(ghq list | peco)'
 
 # prompt
 setopt prompt_subst
