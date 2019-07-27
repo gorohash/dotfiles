@@ -126,3 +126,5 @@ add-zsh-hook precmd _precmd_prompt
 PROMPT='%(?.%{${fg[cyan]}%}.%{${fg[red]}%})%# %{${reset_color}%}'
 RPROMPT='${vcs_info_msg_0_}'
 
+# local settings
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
