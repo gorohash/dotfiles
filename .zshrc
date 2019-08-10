@@ -38,10 +38,7 @@ setopt menu_complete
 # environment dependence
 case ${OSTYPE} in
   darwin*)
-    # for Mac
-
-    # tac
-    alias tac='tail -r'
+    # for macOS
 
     # ls
     export CLICOLOR=1
@@ -64,13 +61,13 @@ alias ll='ls -l'
 alias la='ls -la'
 
 # history
-function _peco_history() {
-  BUFFER=`history -n 1 | tac | peco`
+function _fzf_history() {
+  BUFFER=$(fc -ln 1 | fzf +s --tac | sed -r 's/\\/\\\\/g')
   CURSOR=$#BUFFER
   zle reset-prompt
 }
-zle -N _peco_history
-bindkey '^R' _peco_history
+zle -N _fzf_history
+bindkey '^R' _fzf_history
 
 # version control system info
 autoload -Uz vcs_info
