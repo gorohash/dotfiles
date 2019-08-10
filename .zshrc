@@ -98,11 +98,14 @@ alias gsp='git stash pop'
 alias gst='git status'
 
 function gco() {
-  if [ $# -eq 0 ]; then
-    git branch --sort=-authordate | cut -b 3- | peco | xargs git checkout
-  else
-    git checkout $*
+  if [[ "$#" != 0 ]]; then
+    git checkout "$*"
+	return
   fi
+  local branches branch
+  branches=$(git branch --all --sort=-authordate | grep -v HEAD | cut -b 3-) &&
+  branch=$(echo "$branches" | fzf --border --height=40% --reverse) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 # tig
