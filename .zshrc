@@ -117,6 +117,20 @@ alias cdg='cd $(ghq root)/$(ghq list | fzf +s --height=40% --reverse)'
 # prompt
 setopt prompt_subst
 
+function _git_diff_between_local_and_remotes() {
+  if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]]; then
+    head="$(git rev-parse HEAD)"
+    for remote in $(git rev-parse --remotes)
+    do
+      if [[ "$head" = "$remote" ]]; then
+        return 0
+      fi
+    done
+    echo "%{${fg[cyan]}%}↑↓%{${reset_color}%}"
+  fi
+  return 0
+}
+
 function _precmd_prompt () {
   print
   print -P ' %{${fg[green]}%}%~%{${reset_color}%}'
@@ -124,7 +138,7 @@ function _precmd_prompt () {
 add-zsh-hook precmd _precmd_prompt
 
 PROMPT='%(?.%{${fg[cyan]}%}.%{${fg[red]}%})%# %{${reset_color}%}'
-RPROMPT='${vcs_info_msg_0_}'
+RPROMPT='$(_git_diff_between_local_and_remotes)${vcs_info_msg_0_}'
 
 # local settings
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
