@@ -1,8 +1,10 @@
 #!/bin/sh
 
-PWD=`pwd`
+BASEDIR=$(cd $(dirname $0); pwd)
 
-ln -sf $PWD/.tigrc ~/.tigrc
-ln -sf $PWD/.vimrc ~/.vimrc
-ln -sf $PWD/.zshrc ~/.zshrc
-ln -sf $PWD/.vim ~/.vim
+pushd $BASEDIR
+  ln -sf ./.tigrc ~/.tigrc
+  ln -sf ./.vimrc ~/.vimrc
+  ln -sf ./.zshrc ~/.zshrc
+  ln -sf ./.vim ~/.vim
+popd
