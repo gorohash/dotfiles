@@ -99,12 +99,12 @@ alias gst='git status'
 
 function gco() {
   if [[ "$#" != 0 ]]; then
-    git checkout "$*"
+    git checkout "$@"
 	return
   fi
   local branches branch
-  branches=$(git branch --all --sort=-authordate | grep -v HEAD | cut -b 3-) &&
-  branch=$(echo "$branches" | fzf --border --height=40% --reverse) &&
+  branches=$(git branch --all --sort=-authordate | grep -v HEAD | cut -b 3-)
+  branch=$(echo "$branches" | fzf --border --height=40% --reverse)
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
