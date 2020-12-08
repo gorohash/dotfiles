@@ -93,9 +93,19 @@ alias gl='git log --graph'
 alias glo='git log --graph --oneline'
 alias gp='git push'
 alias gpl='git pull'
-alias gs='git stash'
+alias gst='git stash'
 alias gsp='git stash pop'
-alias gst='git status'
+
+function gs() {
+  if [[ "$#" != 0 ]]; then
+    git switch "$@"
+	return
+  fi
+  local branches branch
+  branches=$(git branch --all --sort=-authordate | grep -v HEAD | cut -b 3-)
+  branch=$(echo "$branches" | fzf --border --height=40% --reverse | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  git switch "$branch"
+}
 
 function gco() {
   if [[ "$#" != 0 ]]; then
