@@ -93,6 +93,7 @@ alias gl='git log --graph'
 alias glo='git log --graph --oneline'
 alias gp='git push'
 alias gpl='git pull'
+alias gr='git restore'
 alias gst='git stash'
 alias gsp='git stash pop'
 
