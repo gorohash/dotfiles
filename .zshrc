@@ -124,7 +124,10 @@ function gco() {
 alias tgs='tig status'
 
 # ghq
-alias cdg='cd $(ghq root)/$(ghq list | fzf +s --height=40% --reverse)'
+function cdg() {
+  local repository
+  repository=$(ghq list | fzf +s --height=40% --reverse) && cd "$(ghq root)/$repository"
+}
 
 # docker
 alias dc='docker-compose'
@@ -158,3 +161,4 @@ RPROMPT='$(_git_diff_between_local_and_remotes)${vcs_info_msg_0_}'
 
 # local settings
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
