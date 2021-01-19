@@ -129,9 +129,18 @@ function cdg() {
   repository=$(ghq list | fzf +s --height=40% --reverse) && cd "$(ghq root)/$repository"
 }
 
+# ssh
+function sshf() {
+  local host
+  host=$(cat ~/.ssh/config | awk '/^Host/ { print $2 }' | fzf) && ssh "$host" 
+}
+
 # docker
 alias dc='docker-compose'
 alias d='docker'
+
+# terraform
+alias tf='terraform'
 
 # prompt
 setopt prompt_subst
