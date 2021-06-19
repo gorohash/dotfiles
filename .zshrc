@@ -135,6 +135,12 @@ function sshf() {
   host=$(cat ~/.ssh/config | awk '/^Host/ { print $2 }' | fzf) && ssh "$host" 
 }
 
+# aws
+function awsprof() {
+  local profile
+  profile=$(cat ~/.aws/config | grep "^\[profile .*\]$" | sed -e "s/^\[profile \(.*\)\]$/\1/" | fzf) && echo "AWS_PROFILE=$profile\nAWS_SDK_LOAD_CONFIG=true\n" >> ./.envrc 
+}  
+
 # docker
 alias dc='docker-compose'
 alias d='docker'
