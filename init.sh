@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-BASEDIR=$(cd $(dirname $0); pwd)
+basedir=$(cd $(dirname $0); pwd)
 
-pushd $BASEDIR
-  ln -sf ./.tigrc ~/.tigrc
-  ln -sf ./.vimrc ~/.vimrc
-  ln -sf ./.zshrc ~/.zshrc
-  ln -sf ./.vim ~/.vim
-popd
+ln -sf ${basedir}/.tigrc ~/.tigrc
+ln -sf ${basedir}/.vimrc ~/.vimrc
+ln -sf ${basedir}/.zshrc ~/.zshrc
+ln -sf ${basedir}/.vim ~/.vim
