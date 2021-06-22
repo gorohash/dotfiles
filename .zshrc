@@ -142,7 +142,7 @@ function awsprof() {
 }  
 
 # docker
-alias dc='docker-compose'
+alias dc='docker compose'
 alias d='docker'
 
 # terraform
