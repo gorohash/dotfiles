@@ -175,5 +175,7 @@ PROMPT='%(?.%{${fg[cyan]}%}.%{${fg[red]}%})%# %{${reset_color}%}'
 RPROMPT='$(_git_diff_between_local_and_remotes)${vcs_info_msg_0_}'
 
 # local settings
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
 
