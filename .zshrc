@@ -117,7 +117,8 @@ alias tgs='tig status'
 # ghq
 cdg() {
   local repository
-  repository=$(ghq list | fzf +s --height=40% --reverse) && cd "$(ghq root)/$repository"
+  repository=$(ghq list | fzf --height=40% --reverse) || return
+  cd "$(ghq root)/$repository"
 }
 
 gwa() {
