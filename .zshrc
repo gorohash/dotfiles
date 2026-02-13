@@ -86,6 +86,7 @@ add-zsh-hook precmd _precmd_vcs_info
 
 # git
 alias ga='git add'
+alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
 alias gl='git log --graph'
