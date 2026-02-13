@@ -95,7 +95,6 @@ alias gpf='git push --force-with-lease'
 alias gpl='git pull'
 alias gr='git restore'
 alias gst='git stash'
-alias gsp='git stash pop'
 
 function gs() {
   if [[ "$#" != 0 ]]; then
