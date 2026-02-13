@@ -98,6 +98,7 @@ alias gr='git reset'
 alias grs='git restore'
 alias grb='git rebase'
 alias gst='git stash'
+alias gw='git worktree'
 
 function gs() {
   if [[ "$#" != 0 ]]; then
