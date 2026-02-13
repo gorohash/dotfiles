@@ -100,6 +100,35 @@ alias grb='git rebase'
 alias gst='git stash'
 alias gw='git worktree'
 
+# tig
+alias tgs='tig status'
+
+# git functions
+cdg() {
+  local repository
+  repository=$(ghq list | fzf --height=40% --reverse) || return
+  cd "$(ghq root)/$repository"
+}
+
+cdw() {
+  local ghq_root="$(ghq root)"
+
+  local selected
+  selected="$(
+    git worktree list \
+    | while read -r path rest; do
+        if [[ "$path" == "$ghq_root"/* ]]; then
+          echo "main\t${path}"
+        else
+          echo "${path##*/}\t${path}"
+        fi
+      done \
+    | fzf --height=40% --reverse --with-nth=1 --delimiter='\t' \
+    | cut -f2
+  )" || return
+  cd "$selected"
+}
+
 gs() {
   if [[ "$#" != 0 ]]; then
     git switch "$@"
@@ -109,16 +138,6 @@ gs() {
   branches=$(git branch --all --sort=-authordate | grep -v HEAD | cut -b 3-)
   branch=$(echo "$branches" | fzf --border --height=40% --reverse | sed "s/.* //" | sed "s#remotes/[^/]*/##")
   git switch "$branch"
-}
-
-# tig
-alias tgs='tig status'
-
-# ghq
-cdg() {
-  local repository
-  repository=$(ghq list | fzf --height=40% --reverse) || return
-  cd "$(ghq root)/$repository"
 }
 
 gwa() {
@@ -151,25 +170,6 @@ gwa() {
   local worktree_path="${HOME}/worktrees/${rel_path}/${worktree_name}"
 
   git worktree add "$worktree_path" "$@" && cd "$worktree_path"
-}
-
-cdw() {
-  local ghq_root="$(ghq root)"
-
-  local selected
-  selected="$(
-    git worktree list \
-    | while read -r path rest; do
-        if [[ "$path" == "$ghq_root"/* ]]; then
-          echo "main\t${path}"
-        else
-          echo "${path##*/}\t${path}"
-        fi
-      done \
-    | fzf --height=40% --reverse --with-nth=1 --delimiter='\t' \
-    | cut -f2
-  )" || return
-  cd "$selected"
 }
 
 # ssh
