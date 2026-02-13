@@ -95,6 +95,7 @@ alias gpf='git push --force-with-lease'
 alias gpl='git pull'
 alias gr='git reset'
 alias grs='git restore'
+alias grb='git rebase'
 alias gst='git stash'
 
 function gs() {
