@@ -87,7 +87,6 @@ add-zsh-hook precmd _precmd_vcs_info
 # git
 alias ga='git add'
 alias gc='git commit'
-alias gcob='git checkout -b'
 alias gd='git diff'
 alias gl='git log --graph'
 alias glo='git log --graph --oneline'
@@ -107,17 +106,6 @@ function gs() {
   branches=$(git branch --all --sort=-authordate | grep -v HEAD | cut -b 3-)
   branch=$(echo "$branches" | fzf --border --height=40% --reverse | sed "s/.* //" | sed "s#remotes/[^/]*/##")
   git switch "$branch"
-}
-
-function gco() {
-  if [[ "$#" != 0 ]]; then
-    git checkout "$@"
-	return
-  fi
-  local branches branch
-  branches=$(git branch --all --sort=-authordate | grep -v HEAD | cut -b 3-)
-  branch=$(echo "$branches" | fzf --border --height=40% --reverse)
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 # tig
