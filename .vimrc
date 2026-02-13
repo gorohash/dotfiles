@@ -7,3 +7,5 @@ set tabstop=2
 set shiftwidth=2
 set cursorline
 set number
+let g:netrw_dirhistmax = 0
+
