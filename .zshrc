@@ -152,6 +152,25 @@ function gwa() {
   git worktree add "$worktree_path" "$@" && cd "$worktree_path"
 }
 
+function cdw() {
+  local ghq_root="$(ghq root)"
+
+  local selected
+  selected="$(
+    git worktree list \
+    | while read -r path rest; do
+        if [[ "$path" == "$ghq_root"/* ]]; then
+          echo "main\t${path}"
+        else
+          echo "${path##*/}\t${path}"
+        fi
+      done \
+    | fzf --height=40% --reverse --with-nth=1 --delimiter='\t' \
+    | cut -f2
+  )" || return
+  cd "$selected"
+}
+
 # ssh
 function sshf() {
   local host
