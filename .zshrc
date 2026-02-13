@@ -120,6 +120,38 @@ function cdg() {
   repository=$(ghq list | fzf +s --height=40% --reverse) && cd "$(ghq root)/$repository"
 }
 
+function gwa() {
+  if [[ $# -eq 0 ]]; then
+    echo "Usage: gwa <worktree-name> [git worktree add options...]" >&2
+    return 1
+  fi
+
+  local worktree_name="$1"
+  shift
+
+  if [[ "$worktree_name" == "main" ]]; then
+    echo "Error: 'main' is not allowed as a worktree name" >&2
+    return 1
+  fi
+
+  local git_common_dir="$(git rev-parse --git-common-dir 2>/dev/null)" || {
+    echo "Error: not inside a git repository" >&2
+    return 1
+  }
+  local repo_root="$(cd "${git_common_dir}/.." && pwd)"
+
+  local ghq_root="$(ghq root)"
+  local rel_path="${repo_root#$ghq_root/}"
+  if [[ "$rel_path" == "$repo_root" ]]; then
+    echo "Error: not inside a ghq-managed repository" >&2
+    return 1
+  fi
+
+  local worktree_path="${HOME}/worktrees/${rel_path}/${worktree_name}"
+
+  git worktree add "$worktree_path" "$@" && cd "$worktree_path"
+}
+
 # ssh
 function sshf() {
   local host
