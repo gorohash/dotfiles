@@ -93,7 +93,7 @@ alias glo='git log --graph --oneline'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias gpl='git pull'
-alias gr='git restore'
+alias grs='git restore'
 alias gst='git stash'
 
 function gs() {
