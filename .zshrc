@@ -61,7 +61,7 @@ alias ll='ls -l'
 alias la='ls -la'
 
 # history
-function _fzf_history() {
+_fzf_history() {
   BUFFER=$(fc -ln 1 | fzf +s --tac | sed -r 's/\\/\\\\/g')
   CURSOR=$#BUFFER
   zle reset-prompt
@@ -78,7 +78,7 @@ zstyle ':vcs_info:git:*' stagedstr "%{${fg[red]}%}*%{${reset_color}%}"
 zstyle ':vcs_info:git:*' unstagedstr "%{${fg[yellow]}%}+%{${reset_color}%}"
 zstyle ':vcs_info:*' formats "%c%u [ %{${fg[magenta]}%}%b%{${reset_color}%} ]"
 zstyle ':vcs_info:*' actionformats ""
-function _precmd_vcs_info () {
+_precmd_vcs_info() {
   LANG=en_US.UTF-8
   vcs_info
 }
@@ -100,7 +100,7 @@ alias grb='git rebase'
 alias gst='git stash'
 alias gw='git worktree'
 
-function gs() {
+gs() {
   if [[ "$#" != 0 ]]; then
     git switch "$@"
 	return
@@ -115,12 +115,12 @@ function gs() {
 alias tgs='tig status'
 
 # ghq
-function cdg() {
+cdg() {
   local repository
   repository=$(ghq list | fzf +s --height=40% --reverse) && cd "$(ghq root)/$repository"
 }
 
-function gwa() {
+gwa() {
   if [[ $# -eq 0 ]]; then
     echo "Usage: gwa <worktree-name> [git worktree add options...]" >&2
     return 1
@@ -152,7 +152,7 @@ function gwa() {
   git worktree add "$worktree_path" "$@" && cd "$worktree_path"
 }
 
-function cdw() {
+cdw() {
   local ghq_root="$(ghq root)"
 
   local selected
@@ -172,13 +172,13 @@ function cdw() {
 }
 
 # ssh
-function sshf() {
+sshf() {
   local host
   host=$(cat ~/.ssh/config | awk '/^Host/ { print $2 }' | fzf) && ssh "$host" 
 }
 
 # aws
-function awsprof() {
+awsprof() {
   local profile
   profile=$(cat ~/.aws/config | grep "^\[profile .*\]$" | sed -e "s/^\[profile \(.*\)\]$/\1/" | fzf) && echo "export AWS_PROFILE=$profile\nexport AWS_SDK_LOAD_CONFIG=true\n" >> ./.envrc 
 }  
@@ -193,7 +193,7 @@ alias tf='terraform'
 # prompt
 setopt prompt_subst
 
-function _git_diff_between_local_and_remotes() {
+_git_diff_between_local_and_remotes() {
   if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]]; then
     head="$(git rev-parse HEAD)"
     for remote in $(git rev-parse --remotes)
@@ -207,7 +207,7 @@ function _git_diff_between_local_and_remotes() {
   return 0
 }
 
-function _precmd_prompt () {
+_precmd_prompt() {
   print
   print -P ' %{${fg[green]}%}%~%{${reset_color}%}'
 }
