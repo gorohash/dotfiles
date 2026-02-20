@@ -62,7 +62,7 @@ alias la='ls -la'
 
 # history
 _fzf_history() {
-  BUFFER=$(fc -ln 1 | fzf +s --tac | sed -r 's/\\/\\\\/g')
+  BUFFER=$(fc -ln 1 | fzf --tac | sed -r 's/\\/\\\\/g')
   CURSOR=$#BUFFER
   zle reset-prompt
 }
