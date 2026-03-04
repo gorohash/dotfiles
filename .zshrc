@@ -98,6 +98,7 @@ alias gpl='git pull'
 alias gr='git reset'
 alias grs='git restore'
 alias grb='git rebase'
+alias grbm='git fetch && git rebase origin/main'
 alias gst='git stash'
 alias gw='git worktree'
 
