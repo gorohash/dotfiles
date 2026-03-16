@@ -131,6 +131,19 @@ cdw() {
   cd "$selected"
 }
 
+gcl() {
+  git fetch --prune
+  local worktree_branches
+  worktree_branches=$(git worktree list --porcelain | awk '/^branch/{sub("refs/heads/", "", $2); print $2}')
+  git branch --verbose --verbose | awk '/: gone]/{print $1}' | while read -r branch; do
+    if echo "$worktree_branches" | grep --quiet --line-regexp "$branch"; then
+      echo "Skipping '$branch' (checked out in a worktree)"
+    else
+      git branch --delete --force "$branch"
+    fi
+  done
+}
+
 gs() {
   if [[ "$#" != 0 ]]; then
     git switch "$@"
