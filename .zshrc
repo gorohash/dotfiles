@@ -85,20 +85,26 @@ _precmd_vcs_info() {
 add-zsh-hook precmd _precmd_vcs_info
 
 # git
+# Claude Code でのコミットは push 前にまとめて署名するため commit.gpgsign をグローバルで false にしている。
+# 手動で叩くエイリアスはその場で署名したいので、コミットを作るコマンドだけ上書きする。
+_git_signed() {
+  git -c commit.gpgsign=true "$@"
+}
+
 alias ga='git add'
 alias gb='git branch'
-alias gc='git commit'
+alias gc='_git_signed commit'
 alias gd='git diff'
 alias gf='git fetch'
 alias gl='git log --graph'
 alias glo='git log --graph --oneline'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
-alias gpl='git pull'
+alias gpl='_git_signed pull'
 alias gr='git reset'
 alias grs='git restore'
-alias grb='git rebase'
-alias grbm='git fetch && git rebase origin/main'
+alias grb='_git_signed rebase'
+alias grbm='git fetch && _git_signed rebase origin/main'
 alias gst='git stash'
 alias gw='git worktree'
 
