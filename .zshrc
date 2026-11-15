@@ -1,4 +1,5 @@
 export LANG=ja_JP.UTF-8
+export EDITOR=vim
 
 # options
 setopt print_eight_bit
