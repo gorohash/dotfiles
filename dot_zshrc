@@ -237,8 +237,3 @@ eval "$(mise activate zsh)"
 # direnv
 eval "$(direnv hook zsh)"
 
-# local settings
-if [[ -f ~/.zshrc.local ]]; then
-  source ~/.zshrc.local
-fi
-
