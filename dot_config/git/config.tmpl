@@ -1,0 +1,23 @@
+[user]
+	name = gorohash
+	email = {{ .email }}
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDIqtCddloHJnfj2esRq8GT3rYOEGV/8ksXQUaMJys7n
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = ~/.config/git/allowed_signers
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[ghq]
+	root = ~/workspace
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[fetch]
+	prune = true
