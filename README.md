@@ -13,6 +13,7 @@ chezmoi init --apply gorohash
 
 | 項目 | 用途 |
 | --- | --- |
+| `machine` (`work` / `personal`) | 会社の PC だけに置く設定 (GitHub Packages の pnpm token helper など) の切り替え |
 | `email` | Git のメールアドレス、署名検証 (`allowed_signers`) |
 | `takumiGuardToken` | Takumi Guard のトークン (`~/.npmrc`) |
 

@@ -2,3 +2,7 @@ registry=https://npm.flatt.tech/
 //npm.flatt.tech/:_authToken={{ .takumiGuardToken }}
 ignore-scripts=true
 min-release-age=3
+{{- if eq .machine "work" }}
+@cybozu-private:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:tokenHelper={{ .chezmoi.homeDir }}/.local/bin/pnpm-token-helper-github-packages
+{{- end }}

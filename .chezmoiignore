@@ -1,1 +1,5 @@
 README.md
+
+{{ if ne .machine "work" }}
+.local/bin/pnpm-token-helper-github-packages
+{{ end }}

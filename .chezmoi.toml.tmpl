@@ -1,6 +1,8 @@
+{{- $machine := promptChoiceOnce . "machine" "マシンの種別" (list "work" "personal") -}}
 {{- $email := promptStringOnce . "email" "Git のメールアドレス" -}}
 {{- $takumiGuardToken := promptStringOnce . "takumiGuardToken" "Takumi Guard のトークン" -}}
 
 [data]
+    machine = {{ $machine | quote }}
     email = {{ $email | quote }}
     takumiGuardToken = {{ $takumiGuardToken | quote }}

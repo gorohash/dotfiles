@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -euo pipefail
+exec /opt/homebrew/bin/op read 'op://Employee/3w6xna64ym2uq76b5otxrtbyye/credential'
