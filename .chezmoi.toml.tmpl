@@ -1,4 +1,6 @@
 {{- $email := promptStringOnce . "email" "Git のメールアドレス" -}}
+{{- $takumiGuardToken := promptStringOnce . "takumiGuardToken" "Takumi Guard のトークン" -}}
 
 [data]
     email = {{ $email | quote }}
+    takumiGuardToken = {{ $takumiGuardToken | quote }}

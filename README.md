@@ -14,6 +14,7 @@ chezmoi init --apply gorohash
 | 項目 | 用途 |
 | --- | --- |
 | `email` | Git のメールアドレス、署名検証 (`allowed_signers`) |
+| `takumiGuardToken` | Takumi Guard のトークン (`~/.npmrc`) |
 
 回答を変えるときは `chezmoi init --prompt` で聞き直す。
 
