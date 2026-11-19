@@ -231,6 +231,12 @@ add-zsh-hook precmd _precmd_prompt
 PROMPT='%(?.%{${fg[cyan]}%}.%{${fg[red]}%})%# %{${reset_color}%}'
 RPROMPT='$(_git_diff_between_local_and_remotes)${vcs_info_msg_0_}'
 
+# mise
+eval "$(mise activate zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
 # local settings
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
