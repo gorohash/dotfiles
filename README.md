@@ -25,6 +25,13 @@ chezmoi init --apply gorohash
 chezmoi update
 ```
 
+## Homebrew のパッケージ
+
+`~/.Brewfile` で管理する。`chezmoi apply` で `~/.Brewfile` が変わると `brew bundle --global --no-upgrade` が実行され、足りないパッケージがインストールされる。
+
+- 追加・削除は `chezmoi edit ~/.Brewfile` で行う (`brew bundle dump` は `~/.Brewfile` を上書きするので使わない)
+- Brewfile から消してもアンインストールはされない。消すときは `brew bundle cleanup --global` で確認してから `--force` を付けて実行する
+
 ## 管理しないもの
 
 - `~/.gitconfig`: `gh auth login` や `git lfs install` などのツールが書き込む先として残す。Git の設定は `~/.config/git/config` で管理する

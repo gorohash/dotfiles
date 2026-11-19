@@ -1,0 +1,95 @@
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Remote repository management made easy
+brew "ghq"
+# Distributed revision control system
+brew "git"
+# Git extension for versioning large files
+brew "git-lfs"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# Popular GNU data compression program
+brew "gzip"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
+# Text interface for Git repositories
+brew "tig"
+# Vi 'workalike' with many additional features
+brew "vim"
+# UNIX shell (command interpreter)
+brew "zsh"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
+# Command-line interface for 1Password
+cask "1password-cli"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
+# Open links in any browser
+cask "choosy"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Voice and text chat software
+cask "discord"
+# Web browser
+cask "firefox"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Git notifications on your menu bar
+cask "gitify"
+# Web browser
+cask "google-chrome"
+# Japanese input software
+cask "google-japanese-ime"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Keyboard customiser
+cask "karabiner-elements"
+# Multi-platform web browser
+cask "microsoft-edge"
+# Replacement for Docker Desktop
+cask "orbstack"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
+# Team communication and collaboration software
+cask "slack"
+# Open-source code editor
+cask "visual-studio-code"
+vscode "dbaeumer.vscode-eslint"
+vscode "ms-ceintl.vscode-language-pack-ja"
+vscode "vscodevim.vim"
+{{- if eq .machine "work" }}
+
+# 仕事用 PC のみ
+# CLI for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more
+brew "googleworkspace-cli"
+# AI-powered translator
+cask "deepl"
+# Collaborative team software
+cask "figma"
+# Native desktop AI assistant from Google
+cask "google-gemini"
+# Grammarly for desktop
+cask "grammarly-desktop"
+# JetBrains tools manager
+cask "jetbrains-toolbox"
+# Connect to Windows
+cask "windows-app"
+{{- end }}
