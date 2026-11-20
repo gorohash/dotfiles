@@ -36,6 +36,10 @@ chezmoi update
 
 `~/.config/mise/config.toml` で管理する。`chezmoi apply` で設定が変わると `mise install` が実行される。
 
+## gh の拡張機能
+
+`run_onchange_after_gh-extensions.sh` の一覧で管理する。一覧を変えると `chezmoi apply` でインストールされる。`gh auth login` を済ませてから `chezmoi apply` する。更新は `gh extension upgrade --all`。
+
 ## 管理しないもの
 
 - `~/.gitconfig`: `gh auth login` や `git lfs install` などのツールが書き込む先として残す。Git の設定は `~/.config/git/config` で管理する
