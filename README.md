@@ -40,6 +40,12 @@ OrbStack ではなく Colima を使う。Docker CLI・Compose・Buildx は Homeb
 colima start
 ```
 
+VM の設定は `~/.colima/_templates/default.yaml` で管理する。デフォルトから CPU 8・メモリ 16 GiB・Rosetta・inotify の上限を変えている。
+
+- テンプレートは VM を新しく作るときにしか読まれない。既存の VM を変えるときは `~/.colima/default/colima.yaml` を編集して `colima restart` する (VM の種類・アーキテクチャ・マウント方式は `colima delete` で作り直さないと変わらない)
+- `colima template` はコメントを消して上書きするので、編集は `chezmoi edit ~/.colima/_templates/default.yaml` で行う
+- Rosetta はホストに入っている必要がある (`softwareupdate --install-rosetta`)
+
 ## mise のツール
 
 `~/.config/mise/config.toml` で管理する。`chezmoi apply` で設定が変わると `mise install` が実行される。
