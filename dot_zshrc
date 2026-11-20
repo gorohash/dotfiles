@@ -205,6 +205,34 @@ alias d='docker'
 # terraform
 alias tf='terraform'
 
+# update
+update() {
+  (
+    setopt err_exit
+    # プロジェクトの mise.toml やスキルを巻き込まないようにホームで実行する
+    cd ~
+
+    print -P "%F{cyan}==> chezmoi update%f"
+    chezmoi update
+
+    print -P "%F{cyan}==> brew update%f"
+    # brew upgrade の自動 update は前回から 24 時間たたないと実行されないため明示する
+    brew update
+
+    print -P "%F{cyan}==> brew upgrade%f"
+    brew upgrade
+
+    print -P "%F{cyan}==> mise upgrade%f"
+    mise upgrade
+
+    print -P "%F{cyan}==> gh extension upgrade%f"
+    gh extension upgrade --all
+
+    print -P "%F{cyan}==> gh skill update%f"
+    gh skill update --all
+  )
+}
+
 # prompt
 setopt prompt_subst
 
