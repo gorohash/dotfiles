@@ -1,4 +1,4 @@
 [tools]
 node = "lts"
 pnpm = "latest"
-"npm:@playwright/cli" = "latest"
+"npm:@playwright/cli" = { version = "latest", postinstall = "playwright-cli install --skills --global" }
