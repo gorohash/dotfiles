@@ -1,0 +1,7 @@
+#!/bin/bash
+# ~/.config/mise/config.toml が変わったときだけ実行される
+# mise config hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+set -euo pipefail
+# カレントディレクトリの mise.toml を拾わないようにホームで実行する
+cd "$HOME"
+/opt/homebrew/bin/mise install

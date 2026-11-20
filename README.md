@@ -32,6 +32,10 @@ chezmoi update
 - 追加・削除は `chezmoi edit ~/.Brewfile` で行う (`brew bundle dump` は `~/.Brewfile` を上書きするので使わない)
 - Brewfile から消してもアンインストールはされない。消すときは `brew bundle cleanup --global` で確認してから `--force` を付けて実行する
 
+## mise のツール
+
+`~/.config/mise/config.toml` で管理する。`chezmoi apply` で設定が変わると `mise install` が実行される。
+
 ## 管理しないもの
 
 - `~/.gitconfig`: `gh auth login` や `git lfs install` などのツールが書き込む先として残す。Git の設定は `~/.config/git/config` で管理する
