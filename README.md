@@ -32,6 +32,14 @@ chezmoi update
 - 追加・削除は `chezmoi edit ~/.Brewfile` で行う (`brew bundle dump` は `~/.Brewfile` を上書きするので使わない)
 - Brewfile から消してもアンインストールはされない。消すときは `brew bundle cleanup --global` で確認してから `--force` を付けて実行する
 
+## Docker
+
+OrbStack ではなく Colima を使う。Docker CLI・Compose・Buildx は Homebrew で入れ、プラグインは `~/.docker/cli-plugins` からのシンボリックリンクで認識させる (`docker login` が書き込む `~/.docker/config.json` は管理しない)。
+
+```sh
+colima start
+```
+
 ## mise のツール
 
 `~/.config/mise/config.toml` で管理する。`chezmoi apply` で設定が変わると `mise install` が実行される。
